@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1d1a16">
+  <title>คลังภาพ · Evolution วิวัฒนาการ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .gal { max-width: 1200px; margin: 0 auto; padding: 14px 16px 40px; display: grid; gap: 14px; }
+    .gbar2 { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .gbar2 h1 { margin: 0; font-size: 22px; }
+    .gbar2 .sp { flex: 1; }
+    .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tabs .on { border-color: var(--gold); color: var(--gold); }
+    .items { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+    .item { background: var(--bg2); border: 1px solid var(--line); border-radius: 12px; padding: 10px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; align-items: start; }
+    .pics { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+    .pics img, .pics canvas { display: block; border-radius: 8px; image-rendering: pixelated; border: 2px solid #5a4a36; max-width: 100%; }
+    .item.card-it .pics canvas { width: 118px; height: auto; }
+    .pics img[hidden] { display: none; }
+    .item.wide-it { grid-template-columns: 1fr; }
+    .item.wide-it .pics img, .item.wide-it .pics canvas { width: 100%; max-width: 320px; height: auto; }
+    .item .card.cf.back { width: 118px; }
+    .meta b { font-size: 16px; }
+    .meta p { margin: 4px 0; font-size: 13px; line-height: 1.5; color: #e6d9c3; }
+    .meta .sub { font-size: 12px; color: var(--muted); }
+    .foods { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 4px; }
+    .foods span { font-size: 11px; background: var(--card); color: var(--cardink); border-radius: 4px; padding: 0 5px; font-weight: 700; }
+    .hash { font-family: monospace; font-size: 10px; color: #8a7a66; word-break: break-all; margin-top: 4px; }
+    .small { font-size: 12px; margin-top: 4px; }
+    .ok { color: #9be3ae; } .bad { color: #ffb4a8; }
+    .note { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div id="app"><div class="loading">กำลังโหลด…</div></div>
+  <script src="artgen/raster.js"></script>
+  <script src="artgen/designs.js"></script>
+  <script src="cardface.js"></script>
+  <script src="gallery.js"></script>
+</body>
+</html>

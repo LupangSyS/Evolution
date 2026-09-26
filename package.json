@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "node --watch server/index.js",
-    "test": "node --test test/*.test.js"
+    "test": "node --test test/*.test.js",
+    "build:art": "node scripts/build-art.js",
+    "test:ui": "node --test test/ui/*.test.js"
   },
   "engines": {
     "node": ">=18"
@@ -17,6 +19,7 @@
     "socket.io": "^4.8.4"
   },
   "devDependencies": {
+    "playwright": "^1.56.1",
     "socket.io-client": "^4.8.4"
   }
 }
