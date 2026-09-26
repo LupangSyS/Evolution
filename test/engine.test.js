@@ -78,10 +78,9 @@ test('hundreds of all-bot games finish for every player count with invariants he
     for (let i = 0; i < 300; i++) {
       const n = 2 + (i % 5);
       let g = null;
-      let checks = 0;
       g = new Game({
         players: bots(n), botDelay: 0,
-        onUpdate: () => { if (g && checks++ % 7 === 0) checkInvariants(g); },
+        onUpdate: () => { if (g) checkInvariants(g); },
       });
       const r = await g.run();
       checkInvariants(g);
