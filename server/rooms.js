@@ -234,6 +234,7 @@ class RoomManager {
       onUpdate: () => this.broadcast(room),
       botDelay: this.opts.botDelay ?? 900,
       timeouts: this.opts.timeouts,
+      maxRounds: this.opts.maxRounds,
     });
     for (const p of room.players) if (!p.isBot && !p.connected) game.setConnected(p.pid, false);
     room.game = game;

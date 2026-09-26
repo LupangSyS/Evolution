@@ -89,7 +89,7 @@ class Game {
   }
 
   event(e) {
-    this.events.push({ id: ++this.eventSeq, round: this.round, ...e });
+    this.events.push({ id: ++this.eventSeq, round: this.round, at: Date.now(), ...e });
     if (this.events.length > 12) this.events.shift();
   }
 
