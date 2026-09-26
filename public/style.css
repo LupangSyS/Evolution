@@ -1,0 +1,30 @@
+/* สไตล์ร่วม: สีหลัก + หน้าการ์ด (ใช้ทั้งเกมและคลังภาพ) */
+:root {
+  --bg: #1d1a16; --bg2: #2a241d; --line: #4a3e30; --ink: #f4ecd8; --muted: #b9ab8f; --gold: #e8c070;
+  --card: #f3e8cf; --cardink: #2a1c10;
+  --hunt: #b8402e; --def: #3f6fa8; --food: #4f9a3a;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Sarabun', 'Noto Sans Thai', sans-serif; overflow-x: hidden; }
+a { color: var(--gold); }
+.loading { padding: 40px; text-align: center; color: var(--muted); }
+.btn { display: inline-flex; align-items: center; gap: 6px; background: #3a3024; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; font: inherit; font-weight: 700; font-size: 14px; cursor: pointer; text-decoration: none; }
+.btn.sm { padding: 5px 9px; font-size: 13px; }
+.btn.go { background: var(--food); border-color: #3a7a2a; color: #fff; }
+.btn.red { background: var(--hunt); border-color: #8a2a1e; color: #fff; }
+.btn:disabled { opacity: .45; cursor: default; }
+
+/* ── หน้าการ์ด: ภาพ → ชื่อ → ประเภท → ผล ── */
+.card.cf { position: relative; flex: 0 0 auto; width: 118px; display: flex; flex-direction: column; background: var(--card); color: var(--cardink); border: 3px solid #7a5a30; border-radius: 9px; padding: 4px; box-shadow: 0 2px 6px rgba(0, 0, 0, .5); }
+.card.cf.g-hunt { border-color: var(--hunt); }
+.card.cf.g-def { border-color: var(--def); }
+.card.cf.g-food { border-color: var(--food); }
+.cf-art { flex: none; aspect-ratio: 66 / 54; background: #2a1a13 center / cover no-repeat; image-rendering: pixelated; border-radius: 5px; border: 1px solid #140b07; }
+.cf-name { text-align: center; font-weight: 800; font-size: 14px; line-height: 1.3; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cf-type { text-align: center; font-size: 10px; color: #6a5a40; border-bottom: 1px solid #d8c8a4; padding-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cf-text { font-size: 10.5px; line-height: 1.35; margin-top: 3px; height: 4.05em; overflow: hidden; }
+.cf-food { position: absolute; right: -6px; top: -6px; width: 24px; height: 24px; border-radius: 50%; background: var(--cardink); color: #fff; font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--card); }
+.card.cf.back { aspect-ratio: 66 / 94; padding: 0; background: #1f4a2a center / cover no-repeat; border-color: #e8c070; image-rendering: pixelated; }
+.card.cf.mini { width: 64px; padding: 2px; border-width: 2px; }
+.card.cf.mini .cf-name { font-size: 10px; }
+.card.cf.mini .cf-food { width: 18px; height: 18px; font-size: 10px; right: -5px; top: -5px; }
