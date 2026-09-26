@@ -562,14 +562,19 @@ class Game {
     const meat = T.size;
     T.pop--;
     T.food = Math.min(T.food, T.pop);
-    if (has(T, 'horns') && !o.negate.includes('horns')) {
+    const horned = has(T, 'horns') && !o.negate.includes('horns');
+    if (horned) {
       C.pop--;
       C.food = Math.min(C.food, C.pop);
-      this.log(`${tName} ใช้เขา: นักล่าเสียประชากร 1`);
     }
-    if (T.pop <= 0) this.extinct(q, T);
-    if (C.pop <= 0) this.extinct(p, C);
-    else {
+    // ลบสปีชีส์ที่สูญพันธุ์ก่อนส่งสถานะให้ผู้เล่น (ไม่ให้เห็นประชากร 0 ค้างบนโต๊ะ)
+    const cName = this.spName(C, p);
+    const dead = [];
+    if (T.pop <= 0) dead.push(this.extinct(q, T, tName, true));
+    if (C.pop <= 0) dead.push(this.extinct(p, C, cName, true));
+    dead.forEach((t) => this.log(t));
+    if (horned) this.log(`${tName} ใช้เขา: นักล่าเสียประชากร 1`);
+    if (C.pop > 0) {
       const got = this.gain(C, meat, 'meat', 'bank');
       this.log(`${this.spName(C, p)} ได้เนื้อ ${got}`);
     }
@@ -580,14 +585,16 @@ class Game {
     }
   }
 
-  extinct(p, sp) {
-    const name = this.spName(sp, p);
+  /** สปีชีส์สูญพันธุ์: ทิ้งลักษณะ เจ้าของจั่วการ์ดเท่าจำนวนลักษณะ (quiet = คืนข้อความแทนการ log) */
+  extinct(p, sp, name = this.spName(sp, p), quiet = false) {
     const n = sp.traits.length;
     p.species = p.species.filter((s) => s !== sp);
     this.discard.push(...sp.traits);
     sp.traits = [];
     const got = this.draw(p, n);
-    this.log(`☠ ${name} สูญพันธุ์${got ? ` — ${p.name} จั่วการ์ด ${got} ใบ` : ''}`);
+    const text = `☠ ${name} สูญพันธุ์${got ? ` — ${p.name} จั่วการ์ด ${got} ใบ` : ''}`;
+    if (!quiet) this.log(text);
+    return text;
   }
 
   endRound() {
